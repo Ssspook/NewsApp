@@ -18,13 +18,13 @@ class NetworkManager {
         let urlString = "\(_baseUrl)\(_RUTopHeadline)&apikey=\(APIKey.key)"
         
         guard let url = URL(string: urlString) else {
-            completionHandler(.Failed(error: nil))
+            completionHandler(.failure(error: .urlError))
             return
         }
         
         AF.request(url, method: .get).validate().responseData { response in
             guard let data = response.data else {
-                completionHandler(.Failed(error: nil))
+                completionHandler(.failure(error: .dataError))
                 return
             }
             
@@ -53,17 +53,18 @@ class NetworkManager {
             }
         }
     }
+    
     //MARK: Private methods
     private func JSONparser(withData data: Data) -> Response {
         do {
             let news = try JSONDecoder().decode(News.self, from: data)
             guard let newsBundle = NewsBundle(articles: news.articles) else {
-                return .Failed(error: nil)
+                return .failure(error: .dataError)
             }
 
-            return .Succeed(news: newsBundle)
+            return .success(news: newsBundle)
         } catch {
-            return .Failed(error: error)
+            return .failure(error: .serverError)
         }
     }
 }
