@@ -2,5 +2,5 @@
 ### Language: `Swift`
 ### OS: `macOS`
 
--- No-storyboard solution
--- Alamofire required
+- No-storyboard solution
+- Alamofire required
