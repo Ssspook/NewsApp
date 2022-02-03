@@ -5,9 +5,9 @@ You can click the specific news to see it in Safari browser. <br>
 ## About
 
 ### Frameworks
-- UIKit
-- Alamofire
-- Foundation
+![Alamofire](https://img.shields.io/badge/-Alamofire-orange?style=for-the-badge)
+![Foundation](https://img.shields.io/badge/-Foundation-lightgrey?style=for-the-badge)
+![UIKit](https://img.shields.io/badge/-UIKit-red?style=for-the-badge)
 
 ### Architecture: `MVVM`
 
